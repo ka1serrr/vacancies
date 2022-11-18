@@ -1,3 +1,5 @@
+@import '../../../styles/vars';
+
 .card {
     margin-top: 24px;
     width: 100%;
@@ -29,10 +31,9 @@
         align-items: center;
         max-width: 446px;
         min-height: 126px;
+        background: no-repeat;
+        background-size: contain;
 
-        img {
-            width: 100px;
-        }
     }
 
     &__info {
@@ -56,8 +57,8 @@
     }
 
     &__wrap-right {
+        position: relative;
         flex-grow: 3;
-
         max-width: 700px
     }
 
@@ -137,6 +138,19 @@
 
         &:hover {
             text-decoration: underline;
+        }
+    }
+
+    &__fav {
+        position: absolute;
+        width: 30px;
+        top: 0;
+        right: 1%;
+        cursor: pointer;
+
+        transition: opacity 0.2s ease-in-out;
+        &:hover {
+            opacity: 0.7;
         }
     }
 

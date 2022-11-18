@@ -1,6 +1,5 @@
 import './app.scss'
 import {ErrorBoundary} from "react-error-boundary";
-import {Button} from "../UI/Button/Button";
 import {Content} from "../pages/Content/Content";
 
 function App() {

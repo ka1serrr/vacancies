@@ -2,11 +2,29 @@ export interface IVacancies {
     name: string,
     alternate_url: string,
     id: any,
-    address: IArea,
+    area: IArea,
     employer: IEmployer
-    schedule: ISchedule,
-    salary: ISalary,
-    snippet: ISnippet
+    schedule?: ISchedule,
+    salary?: ISalary,
+    snippet?: ISnippet
+}
+export interface ITransformedData {
+    name: IVacancies['name'],
+    address: IVacancies['area'],
+    company: IEmployer['name'],
+    companyImg: IEmployer['logo_urls'],
+    web: IVacancies['alternate_url'],
+    form: ISchedule['name'],
+    salaryFrom: ISalary['from'],
+    salaryTo: ISalary['to'],
+    responsibility: ISnippet["responsibility"],
+    requirement: ISnippet['requirement'],
+    id: IVacancies['id'],
+}
+
+export interface IData extends ITransformedData {
+    [key: string]: any
+
 }
 
 export interface IArea {
@@ -16,13 +34,11 @@ export interface IArea {
 export interface IEmployer {
     name: string,
     url?: string,
-    logo_urls?: ILogoUrls;
+    logo_urls: ILogoUrls;
 }
 
 export interface ILogoUrls {
-    90?: string;
-    240?: string;
-    original?: string;
+    original?: string | '';
 }
 
 export interface ISchedule {
