@@ -1,0 +1,22 @@
+.btn {
+    background: #000;
+    border: 1px solid #000000;
+    width: 226px;
+    height: 48px;
+    padding: 8px;
+
+    font-family: 'Formular', serif;
+    font-size: 16px;
+    text-align: center;
+    color: #FFFFFF;
+
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+    }
+}

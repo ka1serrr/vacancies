@@ -1,0 +1,18 @@
+@import '../../fonts/fonts.scss';
+@import '../../styles/null';
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+
+body {
+    font-family: 'Roboto-Regular', serif;
+}
+.app {
+    padding: 81px 24px 40px;
+}
+
+.title {
+    font-family: $rubik-family;
+    @include title;
+    color: $main-color;
+}
