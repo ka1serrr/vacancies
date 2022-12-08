@@ -1,4 +1,68 @@
+@import "vars.scss";
+
 @mixin title {
     font-weight: 400;
     font-size: 64px;
+}
+
+@mixin flex-space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin card-title {
+    font-family:  $roboto-family;
+    font-weight: 700;
+    font-size: 32px;
+    color: $main-color;
+    line-height: 130%;
+    cursor: pointer;
+    max-width: 95%;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@mixin card-salary {
+    font-family: $roboto-family;
+    font-size: 20px;
+    color: $main-color;
+}
+
+@mixin card-fav {
+    position: absolute;
+    width: 30px;
+    top: 0;
+    right: 1%;
+    cursor: pointer;
+
+    transition: opacity 0.2s ease-in-out;
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+@mixin background-logo {
+    background: no-repeat;
+    background-size: contain;
+    @include flex-center;
+}
+
+@mixin box-shadow-card {
+    -webkit-box-shadow: 0px -3px 6px 2px rgba(34, 60, 80, 0.19);
+    -moz-box-shadow: 0px -3px 6px 2px rgba(34, 60, 80, 0.19);
+    box-shadow: 0px -3px 6px 2px rgba(34, 60, 80, 0.19);
 }

@@ -1,0 +1,44 @@
+@import '@/styles/vars.scss';
+@import '@/styles/mixins.scss';
+
+.layout {
+    background: $layout-color;
+    min-height: 100px;
+    margin-bottom: 100px;
+    padding-top: 29px;
+    width: 100%;
+
+    &__wrapper {
+        @include flex-space-between;
+    }
+
+    &__title {
+        font-family: $formular-family;
+        color: $main-white;
+        font-size: 30px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__links {
+        @include flex-space-between;
+        flex-direction: row;
+    }
+
+    &__link {
+        font-family: $formular-family;
+        color: $main-white;
+
+        transition: all 0.2s ease-in-out;
+
+        a:visited {
+            color: rgb(216 216 216);
+        }
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

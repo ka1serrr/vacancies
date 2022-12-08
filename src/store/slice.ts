@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IFavInitialState} from "./types";
-import {ITransformedData} from "../types/vacancies.interface";
+import {ITransformedData} from "@/types/vacancies.interface";
 
 
 const initialState: IFavInitialState = {
@@ -11,7 +11,7 @@ export const favSlice = createSlice({
     name: 'fav',
     initialState,
     reducers: {
-        addToFav: (state, action: PayloadAction<ITransformedData>) => {
+        addToFav: (state, action: PayloadAction<any>) => {
             state.items.push(action.payload)
         },
         removeFromFav: (state, action: PayloadAction<any>) => {

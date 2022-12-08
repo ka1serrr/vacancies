@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import ContentLoader from "react-content-loader"
 
-export const Loader: FC = () => {
+export const LoaderComponent: FC = () => {
     return (
         <ContentLoader
             speed={2}

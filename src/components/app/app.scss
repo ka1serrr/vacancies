@@ -1,14 +1,14 @@
-@import '../../fonts/fonts.scss';
-@import '../../styles/null';
-@import "../../styles/vars";
-@import "../../styles/mixins";
+@import '@/fonts/fonts.scss';
+@import '@/styles/null';
+@import "@/styles/vars";
+@import "@/styles/mixins";
 
 
 body {
     font-family: 'Roboto-Regular', serif;
 }
 .app {
-    padding: 81px 24px 40px;
+    padding: 0 0 40px;
 }
 
 .title {

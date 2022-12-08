@@ -1,4 +1,5 @@
-@import '../../../styles/vars';
+@import '@/styles/vars.scss';
+@import '@/styles/mixins.scss';
 
 .card {
     margin-top: 24px;
@@ -17,8 +18,7 @@
     }
 
     &__wrap {
-        display: flex;
-        justify-content: space-between;
+        @include wrapper;
     }
 
     &__wrap-left {
@@ -26,14 +26,9 @@
     }
 
     &__img {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include background-logo;
         max-width: 446px;
         min-height: 126px;
-        background: no-repeat;
-        background-size: contain;
-
     }
 
     &__info {
@@ -42,7 +37,7 @@
 
     &__list-item {
         margin-top: 17px;
-        font-family: 'Rubik-Regular', serif;
+        font-family: $rubik-family;
 
         span {
             font-weight: 400;
@@ -63,35 +58,28 @@
     }
 
     &__title {
-        font-family: 'Roboto-Regular', serif;
-        font-weight: 400;
-        font-size: 32px;
-        color: #000000;
-        line-height: 160%;
+       @include card-title;
     }
+
     &__salary {
         margin-top: 10px;
-        font-family: 'Roboto-Regular', serif;
-        font-size: 20px;
-        color: #000000;
+        @include card-salary;
     }
 
     &__snapshot-title {
         margin-top: 16px;
-        font-family: 'Roboto-Regular', serif;
+        font-family: $roboto-family;
         font-weight: 400;
         font-size: 16px;
         line-height: 140%;
-        color: #000000;
+        color: $main-color;
         margin-bottom: 8px;
-
     }
 
     &__snapshots {
         overflow: hidden;
         height: 120px;
         position: relative;
-
         transition: all 0.2s ease-in-out;
 
         &_active {
@@ -111,6 +99,7 @@
         font-size: 16px;
         line-height: 140%;
         margin-top: 17px;
+
         &:first-child {
             margin-top: 0;
         }
@@ -121,7 +110,7 @@
             width: 6px;
             height: 6px;
             border-radius: 100%;
-            background-color: #000000;
+            background-color: $main-color;
             top: 8px;
             left: -12px;
         }
@@ -130,7 +119,7 @@
     &__more {
         margin: 11px auto 0;
         display: block;
-        font-family: 'Roboto-Regular', serif;
+        font-family: $roboto-family;
         font-style: normal;
         font-weight: 400;
         font-size: 16px;
@@ -142,16 +131,31 @@
     }
 
     &__fav {
-        position: absolute;
-        width: 30px;
-        top: 0;
-        right: 1%;
-        cursor: pointer;
+        @include card-fav;
+    }
+}
 
-        transition: opacity 0.2s ease-in-out;
-        &:hover {
-            opacity: 0.7;
+@media (max-width: 1128px) {
+    .card__wrap {
+        flex-direction: column;
+        align-items: center;
+
+        &-right {
+            margin-top: 16px;
         }
     }
+}
+@media (max-width: 560px) {
+    .card {
+        min-width: 272px;
+        width: 100%;
+        margin: 24px auto 0;
 
+        &__title {
+            font-size: 22px;
+        }
+        &__salary {
+            font-size: 18px;
+        }
+    }
 }

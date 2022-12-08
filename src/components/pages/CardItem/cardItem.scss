@@ -1,0 +1,87 @@
+@import "@/styles/vars.scss";
+@import "@/styles/mixins.scss";
+
+.card-item {
+    &__title {
+        @include card-title;
+        display: inline;
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__wrapper-left {
+        @include box-shadow-card;
+
+        padding: 20px;
+        width: 777px;
+        position: relative;
+        margin-right: 30px;
+    }
+
+    &__salary {
+        margin-top: 15px;
+        @include card-salary;
+        font-size: 25px;
+    }
+
+    &__info {
+        margin-top: 10px;
+
+        p {
+            font-size: 16px;
+            line-height: 24px;
+            color: $main-color;
+            margin-bottom: 3px;
+        }
+    }
+
+    &__fav {
+        @include card-fav;
+        right: 20px;
+        top: 20px;
+    }
+
+    &__btn {
+        max-width: 400px;
+        width: 100%;
+        margin-top: 10px;
+        background: $layout-color;
+        color: $main-white;
+        padding: 15px;
+        display: block;
+
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background: rgb(214,0,28);
+        }
+    }
+
+    &__wrapper-right {
+        @include box-shadow-card;
+        padding: 20px;
+    }
+
+    &__logo {
+        @include background-logo;
+        background-position: center;
+        width: 300px;
+        min-height: 126px;
+    }
+
+    &__company-trusted {
+        display: inline-block;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+    }
+
+    &__company-name {
+
+    }
+
+}
