@@ -13,12 +13,14 @@
     }
 
     &__wrapper-left {
-        @include box-shadow-card;
-
-        padding: 20px;
-        width: 777px;
+        width: 67%;
         position: relative;
         margin-right: 30px;
+    }
+
+    &__wrapper-info {
+        padding: $padding-def;
+        @include box-shadow-card;
     }
 
     &__salary {
@@ -40,8 +42,8 @@
 
     &__fav {
         @include card-fav;
-        right: 20px;
-        top: 20px;
+        right: $padding-def;
+        top: $padding-def;
     }
 
     &__btn {
@@ -56,32 +58,80 @@
         transition: all 0.2s ease-in-out;
 
         &:hover {
-            background: rgb(214,0,28);
+            background: $main-red;
         }
     }
 
     &__wrapper-right {
         @include box-shadow-card;
-        padding: 20px;
+        width: 33%;
+        min-height: 250px;
+        height: 100%;
+        padding: $padding-def;
     }
 
     &__logo {
         @include background-logo;
         background-position: center;
-        width: 300px;
         min-height: 126px;
     }
 
-    &__company-trusted {
-        display: inline-block;
-        background-size: contain;
-        width: 20px;
-        height: 20px;
-        margin-left: 10px;
+    &__company {
+        margin-top: $padding-def;
+        @include flex-center;
     }
 
     &__company-name {
-
+        text-align: center;
+        font-size: 20px;
+        font-weight: 400;
+        max-width: 90%;
     }
 
+    &__company-trusted {
+        margin-left: 10px;
+
+        img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+    &__description {
+        padding: $padding-def;
+    }
+
+    &__descr-header {
+        font-family: $rubik-family;
+        font-size: 17px;
+        line-height: 1.4rem;
+        font-weight: 400;
+        margin-top: $padding-def;
+        margin-bottom: $padding-def;
+        text-align: justify;
+    }
+
+    &__descr-list {
+        padding-left: 25px;
+        font-size: 17px;
+        font-fomily: $rubik-family;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        li {
+            margin-top: 5px;
+            list-style-type: disc;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+    &__company-city {
+        display: block;
+        text-align: center;
+        font-size: 19px;
+        font-family: $rubik-family;
+        margin-top: 5px;
+    }
 }

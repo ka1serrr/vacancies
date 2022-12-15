@@ -18,9 +18,9 @@ export class GetVacancy {
       keySkills: data?.keySkills,
       schedule: data.schedule?.name,
       experience: data?.experience,
-      city: data.address?.city,
-      street: data.address?.street,
-      building: data.address?.building,
+      experienceId: data?.experience.id,
+      city: data.area?.name,
+      cityId: data.area?.id,
       url: data.alternate_url,
       employment: data.employment,
       salaryFrom: data.salary?.from,
@@ -29,7 +29,7 @@ export class GetVacancy {
       companyLogo: data.employer?.logo_urls?.original,
       companyName: data.employer.name,
       companyTrusted: data.employer?.trusted,
-      companyUrl: data.employer?.url,
+      companyUrl: data.employer?.alternate_url,
       workingDays: data.workingDays?.name,
       workingHours: data.workingHours?.name
     }

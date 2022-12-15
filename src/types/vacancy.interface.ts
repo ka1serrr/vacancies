@@ -1,10 +1,11 @@
+
 export interface IVacancy {
   id: string,
   description: string,
   keySkills: IKeySkills[],
   schedule: ISchedule,
   experience: IExperience,
-  address: IAddress,
+  area: IArea,
   alternate_url: string,
   employment: IEmployment,
   salary: ISalary,
@@ -31,7 +32,7 @@ export interface ITransformedData {
   companyLogo: IEmployer['logo_urls'],
   companyName: IEmployer['name'],
   companyTrusted: IEmployer['trusted'],
-  companyUrl: IEmployer['url'],
+  companyUrl: IEmployer['alternate_url'],
   workingDats: IWorkingDays['name'],
   workingHours: IWorkingHours['name']
 }
@@ -47,7 +48,7 @@ interface ISchedule {
 }
 
 interface IExperience {
-  id?: 'string',
+  id: 'string',
   name: 'string'
 }
 
@@ -55,6 +56,11 @@ interface IAddress {
   city: string,
   street: string,
   building: string,
+}
+
+interface IArea {
+  id: string,
+  name: string,
 }
 
 interface IEmployment {
@@ -70,7 +76,7 @@ interface ISalary {
 interface IEmployer {
   logo_urls: ILogo,
   name: string,
-  url: string,
+  alternate_url: string,
   trusted: boolean
 }
 

@@ -1,7 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IFavInitialState} from "./types";
-import {ITransformedData} from "@/types/vacancies.interface";
-
 
 const initialState: IFavInitialState = {
     items: [],

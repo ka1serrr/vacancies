@@ -1,12 +1,14 @@
 import React, {FC} from 'react';
 import {useQuery} from "@tanstack/react-query";
+import {ErrorBoundary} from "react-error-boundary";
+
 import {GetVacancies} from "@/services/GetVacancies";
 import {Card} from "@/components/UI/Card/Card";
 import {IData} from "@/types/vacancies.interface";
 import {LoaderComponent} from "@/components/UI/LoaderComponent/LoaderComponent";
-import {useTitle} from 'react-use';
+import {useTitle} from '@/imports/hooks';
 
-export const Content: FC = () => {
+const Content: FC = () => {
 	const getVacancies = new GetVacancies;
 	useTitle('All vacancies')
 	const {data:vacancies, isError, isLoading } = useQuery(['products'], () => getVacancies.getData())
@@ -30,4 +32,4 @@ export const Content: FC = () => {
 		</div>
 	);
 };
-
+export default Content;

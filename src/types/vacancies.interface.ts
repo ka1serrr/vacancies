@@ -24,7 +24,6 @@ export interface ITransformedData {
 
 export interface IData extends ITransformedData {
     [key: string]: any
-
 }
 
 export interface IArea {
@@ -47,10 +46,11 @@ export interface ISchedule {
 }
 
 export interface ISalary {
-    from: number,
+    from?: number,
     to?: any,
     currency: string
 }
+
 export interface ISnippet {
     responsibility: string,
     requirement: string

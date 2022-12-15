@@ -1,14 +1,13 @@
+// LIBS
 import React, {FC, useEffect, useRef, useState} from 'react';
-import {IData} from "@/types/vacancies.interface";
-import cn from 'clsx';
-import noImage from '@/resources/noImg.png'
-import heart from '@/resources/heart.svg'
-import heartFav from '@/resources/heartFav.svg'
-import './card.scss'
-import {useActions} from "@/hooks/useActions";
-import {useTypedSelector} from "@/hooks/useTypedSelector";
 import {Link} from "react-router-dom";
-import {useItems} from "@/hooks/useItems";
+import cn from 'clsx';
+// STYLES
+import './card.scss'
+// SELF
+import {heart, heartFav, noImg} from '@/imports/imgs'
+import {IData} from "@/types/vacancies.interface";
+import {useActions, useTypedSelector, useItems, useSalary} from "@/imports/hooks";
 
 export const Card: FC<IData> = ({id, name, address, company, companyImg, web, form, salaryFrom, responsibility, requirement, item, salaryTo}) => {
 
@@ -35,14 +34,14 @@ export const Card: FC<IData> = ({id, name, address, company, companyImg, web, fo
     getUlResize()
   }, [ulHeight])
 
-  const isImagineAvaliable = !companyImg ? noImage : companyImg
+  const isImagineAvaliable = !companyImg ? noImg : companyImg
 
   const {addToFav, removeFromFav} = useActions()
   const {items} = useTypedSelector(state => state.fav)
 
   const isInFav = useItems(id)
 
-  const salary = salaryFrom && salaryTo ? `з/п от ${salaryFrom} до ${salaryTo}` : salaryFrom && salaryTo == undefined ? `з/п от ${salaryFrom}` : salaryFrom == undefined && salaryTo ? `з/п до ${salaryTo}` : 'з/п не указана'
+  const salary = useSalary(salaryFrom, salaryTo)
 
   return (
     <div className={cn('card', {
@@ -75,8 +74,6 @@ export const Card: FC<IData> = ({id, name, address, company, companyImg, web, fo
             card__snapshots_active: isMore === false
           })}>
             <ul ref={height} className="card__snapshots-list">
-              <li className="card__snapshots-list-item">{responsibility}</li>
-              {!requirement ? null : <li className="card__snapshots-list-item">{requirement}</li>}
               <li className="card__snapshots-list-item">{responsibility}</li>
               {!requirement ? null : <li className="card__snapshots-list-item">{requirement}</li>}
             </ul>
