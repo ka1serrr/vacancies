@@ -18,12 +18,12 @@ export interface IRecommendedItems {
 
 export interface IRecommendedData {
   name: string,
-  alternate_url: string,
-  id: string,
+  url: string,
+  id: string | undefined,
   salaryFrom: ISalary['from'],
   salaryTo: ISalary['to'],
   area: IRecommendedArea['name'],
-  areaID?: IRecommendedArea['id'],
+  cityId: IRecommendedArea['id'],
   requirement: ISnippet["requirement"],
   responsibility: ISnippet['responsibility'],
 }

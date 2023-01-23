@@ -59,7 +59,7 @@ interface IAddress {
 }
 
 interface IArea {
-  id: string,
+  id: number,
   name: string,
 }
 

@@ -47,7 +47,7 @@ export interface ISchedule {
 
 export interface ISalary {
     from?: number,
-    to?: any,
+    to?: number,
     currency: string
 }
 

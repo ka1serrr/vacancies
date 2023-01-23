@@ -1,0 +1,21 @@
+@import "@/styles/vars.scss";
+
+.card-recommended {
+    margin-top: 20px;
+
+    &__title {
+        color: $main-color;
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+
+    .recommended {
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        &__title {
+
+        }
+    }
+}

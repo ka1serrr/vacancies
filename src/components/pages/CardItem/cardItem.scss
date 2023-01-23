@@ -62,11 +62,20 @@
         }
     }
 
+    &__link {
+        display: inline-block;
+        max-width: 400px;
+        width: 100%;
+    }
+
     &__wrapper-right {
-        @include box-shadow-card;
         width: 33%;
         min-height: 250px;
         height: 100%;
+    }
+
+    &__wrapper-right_info {
+        @include box-shadow-card;
         padding: $padding-def;
     }
 
@@ -133,5 +142,14 @@
         font-size: 19px;
         font-family: $rubik-family;
         margin-top: 5px;
+    }
+}
+
+@media screen and (max-width: 1000px ){
+    .card-item {
+        &__wrapper {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 }

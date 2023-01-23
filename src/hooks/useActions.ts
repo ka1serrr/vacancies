@@ -1,7 +1,7 @@
 import {useDispatch} from "react-redux";
 import {useMemo} from "react";
 import {bindActionCreators} from "redux";
-import {favSlice} from "@/store/slice";
+import {favSlice} from "@/favSlice/favSlice";
 
 const rootAction = {
     ...favSlice.actions

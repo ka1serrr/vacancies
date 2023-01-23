@@ -7,7 +7,7 @@ import './card.scss'
 // SELF
 import {heart, heartFav, noImg} from '@/imports/imgs'
 import {IData} from "@/types/vacancies.interface";
-import {useActions, useTypedSelector, useItems, useSalary} from "@/imports/hooks";
+import {useActions, useItems, useSalary} from "@/imports/hooks";
 
 export const Card: FC<IData> = ({id, name, address, company, companyImg, web, form, salaryFrom, responsibility, requirement, item, salaryTo}) => {
 
@@ -37,8 +37,6 @@ export const Card: FC<IData> = ({id, name, address, company, companyImg, web, fo
   const isImagineAvaliable = !companyImg ? noImg : companyImg
 
   const {addToFav, removeFromFav} = useActions()
-  const {items} = useTypedSelector(state => state.fav)
-
   const isInFav = useItems(id)
 
   const salary = useSalary(salaryFrom, salaryTo)

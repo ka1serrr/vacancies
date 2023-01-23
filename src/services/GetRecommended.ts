@@ -6,12 +6,13 @@ export class GetRecommended {
 
   _basePage = 0
 
-  async getData(id: any, per_page: number, page = this._basePage) {
+  async getData(id: any, per_page: number, page?: number, area?: number) {
     try {
       const response = await axios.get(`vacancies/${id}/similar_vacancies`, {
         params: {
           page,
-          per_page
+          per_page,
+          area
         }
       })
 
@@ -32,7 +33,7 @@ export class GetRecommended {
       salaryFrom: data.salary?.from,
       salaryTo: data.salary?.to,
       area: data.area?.name,
-      areaId: data.area?.id,
+      cityId: data.area?.id,
       requirement: data.snippet?.requirement,
       responsibility: data.snippet?.responsibility,
       schedule: data.schedule?.name,
