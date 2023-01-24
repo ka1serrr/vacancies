@@ -1,4 +1,5 @@
 import { favSlice } from '@/favSlice/favSlice';
+import { vacanciesApi } from '@/api/vacanciesApiSlice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   FLUSH,
@@ -21,18 +22,20 @@ const persistConfig: PersistConfig<any> = {
 
 const rootReducer = combineReducers({
   fav: favSlice.reducer,
+  [vacanciesApi.reducerPath]: vacanciesApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
+  devTools: true,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(vacanciesApi.middleware),
 });
 
 export const persistor = persistStore(store);

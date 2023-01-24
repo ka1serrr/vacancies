@@ -8,7 +8,7 @@ export const RecommendedCard:FC <IRecommendedData> = ({salaryFrom, salaryTo, res
 
   return (
     <div className='recommended'>
-      <span className="recommended__title"><a href={url} onClick={() => navigate('/vacancies/:id')}>{name}</a></span>
+      <span className="recommended__title"><span onClick={() => navigate(`/vacancies/${id}`)}>{name}</span></span>
     </div>
   );
 };

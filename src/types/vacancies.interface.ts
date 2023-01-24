@@ -1,4 +1,4 @@
-export interface IVacancies {
+export interface IVacancies extends Array<any> {
     name: string,
     alternate_url: string,
     id: any,

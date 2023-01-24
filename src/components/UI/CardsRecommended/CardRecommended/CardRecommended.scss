@@ -4,8 +4,9 @@
   >&__title {
     border-bottom: 1px solid $layout-color;
     transition: padding-bottom .1s ease-in-out;
+    cursor: pointer;
     &:hover {
-      padding-bottom: 4px;
+      padding-bottom: 2px;
     }
   }
 

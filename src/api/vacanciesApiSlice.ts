@@ -1,17 +1,20 @@
-import {createApi, fakeBaseQuery, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {EndpointBuilder} from "@reduxjs/toolkit/dist/query/endpointDefinitions";
-import {GetVacancies} from "@/services/GetVacancies";
-import {IVacancies} from "@/types/vacancies.interface";
-import {IVacancy} from "@/types/vacancy.interface";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { GetVacancies } from '@/services/GetVacancies';
+import { IVacancies } from '@/types/vacancies.interface';
 
 const getVacancies = new GetVacancies;
 
 export const vacanciesApi = createApi({
   reducerPath: 'vacancies',
-  baseQuery: fakeBaseQuery(),
+  baseQuery: fetchBaseQuery({baseUrl: `https://api.hh.ru/`}),
   endpoints: builder => ({
     getVacancies: builder.query<IVacancies, number>({
-      queryFn: (page) => getVacancies.getData(page)
-    })
-  })
+      queryFn: async (page = 198) => {
+        const response = await getVacancies.getData(page)
+        return {data: await response}
+      },
+    }),
+  }),
 });
+
+export const { useGetVacanciesQuery } = vacanciesApi;
