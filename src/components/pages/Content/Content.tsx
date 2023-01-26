@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useGetVacanciesQuery } from '@/api/vacanciesApiSlice';
 
@@ -9,18 +9,12 @@ import { useTitle } from '@/imports/hooks';
 
 const Content: FC = () => {
   useTitle('All vacancies');
-  // const { data: vacancies, isError, isLoading } = useQuery(['products'], () => getVacancies.getData());
 
-  const {data, isLoading} = useGetVacanciesQuery(198);
+  const { data, isLoading } = useGetVacanciesQuery(198);
 
   const loading = isLoading && [...Array(5)].map((item, i) => <LoaderComponent key={i} />);
 
-  const content = !isLoading && data.map((item: IData) => (
-    <Card key={item.id}
-          {...item}
-          item={item}
-    />
-  ));
+  const content = !isLoading && data?.map((item: IData) => <Card key={item.id} {...item} item={item} />);
 
   return (
     <div className='content'>
