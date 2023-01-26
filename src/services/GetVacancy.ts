@@ -6,8 +6,13 @@ axios.defaults.baseURL = `https://api.hh.ru/`;
 export class GetVacancy {
 
   async getVacancy(id: any) {
-    const response = await axios.get(`vacancies/${id}`)
-    return this._transformData(response.data)
+    try {
+      const response = await axios.get(`vacancies/${id}`)
+      return this._transformData(response.data)
+    } catch (e) {
+      throw new Error(`Произошла ошибка ${e.message}`)
+    }
+
   }
 
   _transformData = (data: IVacancy) => {

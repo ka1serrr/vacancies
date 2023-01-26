@@ -11,15 +11,20 @@ export class GetVacancies implements IData {
   _basePage: number = 198;
 
   async getData(page = this._basePage) {
-    const response = await axios.get(`vacancies/`, {
-      params: {
-        salary: 30000,
-        currency: 'RUR',
-        per_page: 5,
-        page,
-      }
-    })
-    return response.data.items.map(this._transformData)
+    try {
+      const response = await axios.get(`vacancies/`, {
+        params: {
+          salary: 30000,
+          currency: 'RUR',
+          per_page: 5,
+          page,
+        }
+      })
+      return response.data.items.map(this._transformData)
+    }
+    catch (e) {
+      throw new Error(`Произошла ошибка ${e.message}`)
+    }
   }
 
   _transformData = (data: IVacancies) => {
