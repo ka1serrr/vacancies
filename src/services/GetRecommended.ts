@@ -6,7 +6,7 @@ export class GetRecommended {
 
   _basePage = 0
 
-  async getData(id: any, per_page: number, page?: number, area?: number) {
+  async getData(id: unknown, per_page: number, page?: number, area?: number) {
     try {
       const response = await axios.get(`vacancies/${id}/similar_vacancies`, {
         params: {

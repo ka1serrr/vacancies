@@ -1,34 +1,39 @@
-import React, {FC} from 'react';
-import './cardsRecommended.scss'
-import {useQuery} from "@tanstack/react-query";
-import {GetRecommended} from "@/services/GetRecommended";
-import {RecommendedCard} from "@/components/UI/CardsRecommended/CardRecommended/RecommendedCard";
+import React, { FC } from 'react';
+import './cardsRecommended.scss';
+import { RecommendedCard } from '@/components/UI/CardsRecommended/CardRecommended/RecommendedCard';
+import { useGetRecommendedQuery } from '@/api/recommendedApiSlice';
+import { LoaderSvg } from '@/components/UI/LoaderSvg/LoaderSvg';
 
 interface IRecommendedProps {
-  cardId: string,
-  cityId: number
+  cardId: string;
+  cityId: number;
+  isCardLoading: boolean;
 }
 
+const CardsRecommended: FC<IRecommendedProps> = ({ cardId, cityId, isCardLoading }) => {
+  const {
+    data: recommended,
+    isLoading,
+    isFetching,
+    isError,
+    error,
+  } = useGetRecommendedQuery({ id: cardId, perPage: 2, page: 1, area: cityId }, { skip: !cardId });
 
-const CardsRecommended:FC <IRecommendedProps> = ({cardId, cityId}) => {
-  const getRecommended = new GetRecommended()
-
-  const {data: recommended, isError, isLoading, error} = useQuery(['recommended', cardId], () => getRecommended.getData(cardId, 2, cityId), {retry: 5, enabled: !!cardId, refetchOnWindowFocus: false,})
-
-  const errorMessage = error instanceof Error && error.message
-
-  const content = (!isLoading && !isError) && recommended.items.map((rec: any) => (
-    <RecommendedCard
-      key={rec.id}
-      {...rec}/>
-  ))
-
-
+  const errorMessage = error instanceof Error && error.message;
+  const loading = isLoading && <LoaderSvg />;
+  const content =
+    !isLoading && !isError && recommended?.items.map((rec: any) => <RecommendedCard key={rec.id} {...rec} />);
   return (
     <div className='card-recommended'>
-      <span className='card-recommended__title'>Похожие вакансии:</span>
-      {content}
-      <span className="card-recommended-found">Было найдено: {recommended?.found} похожих вакансий</span>
+      {loading || !cardId ? (
+        loading
+      ) : (
+        <>
+          <span className='card-recommended__title'>Похожие вакансии:</span>
+          {content}
+          <span className='card-recommended-found'>Было найдено: {recommended?.found} похожих вакансий</span>
+        </>
+      )}
     </div>
   );
 };
