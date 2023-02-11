@@ -11,5 +11,13 @@
   "bracketSameLine": false,
   "arrowParens": "always",
   "endOfLine": "auto",
-  "singleAttributePerLine": false
+  "singleAttributePerLine": false,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "/api",
+    "^@/(.*)",
+    "^./(.*)"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

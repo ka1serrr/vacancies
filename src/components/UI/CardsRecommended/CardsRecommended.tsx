@@ -14,7 +14,6 @@ const CardsRecommended: FC<IRecommendedProps> = ({ cardId, cityId, isCardLoading
   const {
     data: recommended,
     isLoading,
-    isFetching,
     isError,
     error,
   } = useGetRecommendedQuery({ id: cardId, perPage: 2, page: 1, area: cityId }, { skip: !cardId });

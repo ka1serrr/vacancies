@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@loadable/component": "^5.15.2",
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/loadable__component": "^5.13.4",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.24",

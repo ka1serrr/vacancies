@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { GetVacancies } from '@/services/GetVacancies';
-import { IVacancies } from '@/types/vacancies.interface';
 
 const getVacancies = new GetVacancies();
 

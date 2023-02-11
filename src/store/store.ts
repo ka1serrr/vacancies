@@ -1,6 +1,7 @@
-import { favSlice } from '@/favSlice/favSlice';
+import { favSlice } from '@/slices/favSlice/favSlice';
 import { vacanciesApiSlice } from '@/api/vacanciesApiSlice';
 import { recommendedApiSlice } from '@/api/recommendedApiSlice';
+import { vacancyApiSlice } from '@/api/cardItemApiSlice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   FLUSH,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   fav: favSlice.reducer,
   [vacanciesApiSlice.reducerPath]: vacanciesApiSlice.reducer,
   [recommendedApiSlice.reducerPath]: recommendedApiSlice.reducer,
+  [vacancyApiSlice.reducerPath]: vacancyApiSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -39,7 +41,8 @@ export const store = configureStore({
       },
     })
       .concat(vacanciesApiSlice.middleware)
-      .concat(recommendedApiSlice.middleware),
+      .concat(recommendedApiSlice.middleware)
+      .concat(vacancyApiSlice.middleware),
 });
 
 export const persistor = persistStore(store);

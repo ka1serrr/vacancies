@@ -1,23 +1,17 @@
 import React, { FC } from 'react';
-import { HTMLReactParserOptions, Element } from 'html-react-parser';
-import parse, { domToReact } from 'html-react-parser';
+import parse, { domToReact, Element, HTMLReactParserOptions } from 'html-react-parser';
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 import './cardItem.scss';
-import { GetVacancy } from '@/services/GetVacancy';
-import { useActions, useItems, useTitle, useSalary } from '@/imports/hooks';
-import { heart, heartFav, noImg, checked } from '@/imports/imgs';
+import { useActions, useItems, useSalary, useTitle } from '@/imports/hooks';
+import { checked, heart, heartFav, noImg } from '@/imports/imgs';
 import CardRecommended from '@/components/UI/CardsRecommended/CardsRecommended';
+import { useGetVacancyQuery } from '@/api/cardItemApiSlice';
 
 const CardItem: FC = () => {
-  const getVacancy = new GetVacancy();
   const { id } = useParams();
-  const {
-    data: vacancy,
-    isError,
-    isLoading,
-    error,
-  } = useQuery(['products', id], () => getVacancy.getVacancy(id), { refetchOnWindowFocus: false });
+
+  const { data: vacancy, isError, isLoading, error } = useGetVacancyQuery(id);
+
   useTitle(`Vacancy ${vacancy?.name}` || '');
 
   console.log(vacancy?.cityId || '');
