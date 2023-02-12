@@ -1,0 +1,6 @@
+@import "@/styles/mixins.scss";
+
+.error-message {
+  text-align: center;
+  @include title
+}

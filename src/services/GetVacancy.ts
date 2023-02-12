@@ -1,18 +1,16 @@
-import axios from "axios";
-import {IVacancy} from "../types/vacancy.interface";
+import axios from 'axios';
+import { IVacancy } from '../types/vacancy.interface';
 
 axios.defaults.baseURL = `https://api.hh.ru/`;
 
 export class GetVacancy {
-
   async getVacancy(id: any) {
     try {
-      const response = await axios.get(`vacancies/${id}`)
-      return this._transformData(response.data)
+      const response = await axios.get(`vacancies/${id}`);
+      return this._transformData(response.data);
     } catch (e) {
-      throw new Error(`Произошла ошибка ${e.message}`)
+      throw new Error(`Произошла ошибка ${e.message}`);
     }
-
   }
 
   _transformData = (data: IVacancy) => {
@@ -36,7 +34,7 @@ export class GetVacancy {
       companyTrusted: data.employer?.trusted,
       companyUrl: data.employer?.alternate_url,
       workingDays: data.workingDays?.name,
-      workingHours: data.workingHours?.name
-    }
-  }
+      workingHours: data.workingHours?.name,
+    };
+  };
 }
