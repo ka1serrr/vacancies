@@ -1,0 +1,7 @@
+@import "@/styles/mixins.scss";
+
+.loader {
+  >&__wrapper {
+    @include flex-center;
+  }
+}
