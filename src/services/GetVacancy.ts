@@ -4,7 +4,7 @@ import { IVacancy } from '../types/vacancy.interface';
 axios.defaults.baseURL = `https://api.hh.ru/`;
 
 export class GetVacancy {
-  async getVacancy(id: any) {
+  async getVacancy(id: unknown) {
     try {
       const response = await axios.get(`vacancies/${id}`);
       return this._transformData(response.data);
