@@ -7,10 +7,6 @@ axios.defaults.baseURL = `https://api.hh.ru/`;
 interface IData {
   getData: unknown;
 }
-interface IGetVacancies {
-  page: number;
-  per_page: number;
-}
 
 export class GetVacancies implements IData {
   async getData(page: number, per_page: number) {

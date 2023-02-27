@@ -8,6 +8,7 @@ import { LoaderComponent } from '@/components/UI/LoaderComponent/LoaderComponent
 import { useActions, useTitle, useTypedSelector } from '@/imports/hooks';
 import { ErrorMessage } from '@/components/UI/ErrorMessage/ErrorMessage';
 import { Pagination } from '@/components/UI/Pagination/Pagination';
+import { ChangeAmountOfVacancies } from '@/components/UI/changeAmountOfVacancies/ChangeAmountOfVacancies';
 
 const Content: FC = () => {
   useTitle('All vacancies');
@@ -15,15 +16,13 @@ const Content: FC = () => {
   const { setCurrentPage, setTotalPages } = useActions();
   const { currentPage, perPage } = useTypedSelector((state) => state.pagination);
 
-  console.log(perPage);
-
   const {
     data,
     isLoading,
     isError,
     error: fetchError,
     isSuccess,
-  } = useGetVacanciesQuery({ page: currentPage, perPage: perPage });
+  } = useGetVacanciesQuery({ page: currentPage, perPage });
 
   useEffect(() => {
     if (isSuccess) {
@@ -43,7 +42,7 @@ const Content: FC = () => {
     <div className='content'>
       <div className='container'>
         <h1 className='title'>List of vacancies</h1>
-
+        <ChangeAmountOfVacancies />
         {loading}
         {error}
         {content}

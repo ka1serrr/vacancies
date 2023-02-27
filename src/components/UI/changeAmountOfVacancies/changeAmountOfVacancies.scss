@@ -1,0 +1,23 @@
+@import "@/styles/vars.scss";
+
+.amount {
+  display: flex;
+  justify-content: flex-end;
+  >&__btn {
+    margin-right: 10px;
+    font-weight: bold;
+    border: 1px solid $main-color;
+    padding: 5px;
+    transition: 0.2s opacity linear;
+
+    &_active {
+      background-color: $layout-color;
+      color: $main-white;
+      border: 1px solid $main-white;
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
