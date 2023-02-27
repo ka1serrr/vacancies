@@ -1,5 +1,6 @@
-import axios from "axios";
-import {IVacancies} from "@/types/vacancies.interface";
+import axios from 'axios';
+import { IVacancies } from '@/types/vacancies.interface';
+import { useTypedSelector } from '@/imports/hooks';
 
 axios.defaults.baseURL = `https://api.hh.ru/`;
 
@@ -18,12 +19,14 @@ export class GetVacancies implements IData {
           currency: 'RUR',
           per_page: 5,
           page,
-        }
-      })
-      return response.data.items.map(this._transformData)
-    }
-    catch (e) {
-      throw new Error(`Произошла ошибка ${e.message}`)
+        },
+      });
+      return {
+        data: response.data.items.map(this._transformData),
+        found: response.data.found,
+      };
+    } catch (e) {
+      throw new Error(`Произошла ошибка ${e.message}`);
     }
   }
 
@@ -39,8 +42,7 @@ export class GetVacancies implements IData {
       salaryFrom: data.salary?.from,
       salaryTo: data.salary?.to,
       responsibility: data.snippet?.responsibility,
-      requirement: data.snippet?.requirement
-    }
-  }
-
+      requirement: data.snippet?.requirement,
+    };
+  };
 }

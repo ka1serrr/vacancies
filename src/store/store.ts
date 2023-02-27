@@ -1,4 +1,5 @@
 import { favSlice } from '@/slices/favSlice/favSlice';
+import { paginationSlice } from '@/slices/paginationSlice/paginationSlice';
 import { vacanciesApiSlice } from '@/api/vacanciesApiSlice';
 import { recommendedApiSlice } from '@/api/recommendedApiSlice';
 import { vacancyApiSlice } from '@/api/cardItemApiSlice';
@@ -24,6 +25,7 @@ const persistConfig: PersistConfig<any> = {
 
 const rootReducer = combineReducers({
   fav: favSlice.reducer,
+  pagination: paginationSlice.reducer,
   [vacanciesApiSlice.reducerPath]: vacanciesApiSlice.reducer,
   [recommendedApiSlice.reducerPath]: recommendedApiSlice.reducer,
   [vacancyApiSlice.reducerPath]: vacancyApiSlice.reducer,
