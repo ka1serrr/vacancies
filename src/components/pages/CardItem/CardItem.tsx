@@ -6,6 +6,7 @@ import { checked, heart, heartFav, noImg } from '@/imports/imgs';
 import CardRecommended from '@/components/UI/CardsRecommended/CardsRecommended';
 import { useGetVacancyQuery } from '@/api/cardItemApiSlice';
 import { ErrorMessage } from '@/components/UI/ErrorMessage/ErrorMessage';
+import { Button } from '@/components/UI/Button/Button';
 
 const CardItem = () => {
   const { id } = useParams();
@@ -61,7 +62,7 @@ const CardItem = () => {
                   className='card-item__fav'
                 />
                 <a className='card-item__link' href={vacancy?.url}>
-                  <button className='card-item__btn'>Откликнуться</button>
+                  <Button className='card-item__btn' title={'Откликнуться'} />
                 </a>
               </div>
               <div className='card-item__description'>{parse(description || '', options)}</div>

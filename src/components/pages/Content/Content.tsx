@@ -15,7 +15,15 @@ const Content: FC = () => {
   const { setCurrentPage, setTotalPages } = useActions();
   const { currentPage, perPage } = useTypedSelector((state) => state.pagination);
 
-  const { data, isLoading, isError, error: fetchError, isSuccess } = useGetVacanciesQuery(currentPage);
+  console.log(perPage);
+
+  const {
+    data,
+    isLoading,
+    isError,
+    error: fetchError,
+    isSuccess,
+  } = useGetVacanciesQuery({ page: currentPage, perPage: perPage });
 
   useEffect(() => {
     if (isSuccess) {

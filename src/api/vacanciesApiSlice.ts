@@ -3,14 +3,19 @@ import { GetVacancies } from '@/services/GetVacancies';
 
 const getVacancies = new GetVacancies();
 
+interface IGetVacancies {
+  page: number;
+  perPage: number;
+}
+
 export const vacanciesApiSlice = createApi({
   reducerPath: 'vacancies',
   baseQuery: fetchBaseQuery({ baseUrl: `https://api.hh.ru/` }),
   endpoints: (builder) => ({
     getVacancies: builder.query({
-      queryFn: async (page: number = 198) => {
-        const response = await getVacancies.getData(page);
-        return { data: await response };
+      queryFn: async ({ page, perPage }: IGetVacancies) => {
+        const response = await getVacancies.getData(page, perPage);
+        return { data: response };
       },
     }),
   }),

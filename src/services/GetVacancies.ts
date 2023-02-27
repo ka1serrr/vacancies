@@ -5,19 +5,21 @@ import { useTypedSelector } from '@/imports/hooks';
 axios.defaults.baseURL = `https://api.hh.ru/`;
 
 interface IData {
-  getData: any;
+  getData: unknown;
+}
+interface IGetVacancies {
+  page: number;
+  per_page: number;
 }
 
 export class GetVacancies implements IData {
-  _basePage: number = 198;
-
-  async getData(page = this._basePage) {
+  async getData(page: number, per_page: number) {
     try {
       const response = await axios.get(`vacancies/`, {
         params: {
           salary: 30000,
           currency: 'RUR',
-          per_page: 5,
+          per_page,
           page,
         },
       });
