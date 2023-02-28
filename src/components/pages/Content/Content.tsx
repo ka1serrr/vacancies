@@ -28,7 +28,7 @@ const Content: FC = () => {
     if (isSuccess) {
       setTotalPages(data?.found);
     }
-  }, [isSuccess]);
+  }, [isSuccess, data?.found]);
 
   const loading = isLoading && [...Array(perPage)].map((item, i) => <LoaderComponent key={i} />);
 

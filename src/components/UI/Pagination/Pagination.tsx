@@ -1,5 +1,6 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useTypedSelector } from '@/imports/hooks';
+import { createPages } from '@/components/UI/Pagination/countPages';
 
 interface IPagination {
   onPageChange: unknown;
@@ -10,6 +11,12 @@ export const Pagination: FC<IPagination> = ({ onPageChange }): any => {
 
   const lastPageIndex = currentPage * perPage;
   const firstPageIndex = lastPageIndex - perPage;
+
+  const pages: number[] = [];
+
+  useEffect(() => {
+    createPages(pages, totalPages, currentPage);
+  }, [totalPages, currentPage]);
 
   return (
     <div className='pages'>
