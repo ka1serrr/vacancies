@@ -23,6 +23,7 @@ export const ChangeAmountOfVacancies = () => {
     <div className='amount'>
       {btns.map((btn) => (
         <Button
+          key={btn.title}
           title={btn.title}
           className={cn('amount__btn', {
             amount__btn_active: activeBtn === btn.title,

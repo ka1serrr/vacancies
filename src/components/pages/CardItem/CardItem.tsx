@@ -11,7 +11,7 @@ import { Button } from '@/components/UI/Button/Button';
 const CardItem = () => {
   const { id } = useParams();
 
-  const { data: vacancy, isError, isLoading, error } = useGetVacancyQuery(id);
+  const { data: vacancy, isError, isLoading, error } = useGetVacancyQuery(id, { skip: !id });
 
   useTitle(`Vacancy ${vacancy?.name}` || '');
 

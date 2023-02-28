@@ -16,6 +16,7 @@ import {
   persistStore,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { userSlice } from '@/slices/userSlice/useSliceTypes';
 
 const persistConfig: PersistConfig<any> = {
   key: 'root',
@@ -26,6 +27,7 @@ const persistConfig: PersistConfig<any> = {
 const rootReducer = combineReducers({
   fav: favSlice.reducer,
   pagination: paginationSlice.reducer,
+  user: userSlice.reducer,
   [vacanciesApiSlice.reducerPath]: vacanciesApiSlice.reducer,
   [recommendedApiSlice.reducerPath]: recommendedApiSlice.reducer,
   [vacancyApiSlice.reducerPath]: vacancyApiSlice.reducer,

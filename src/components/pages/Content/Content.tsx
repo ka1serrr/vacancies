@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useState } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
+import React, { FC, useEffect } from 'react';
+
 import { useGetVacanciesQuery } from '@/api/vacanciesApiSlice';
 
 import { Card } from '@/components/UI/Card/Card';
