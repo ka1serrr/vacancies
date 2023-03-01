@@ -14,8 +14,8 @@ function App() {
     <Layout>
       <Routes>
         <Route path={'/'} element={<Content fallback={<LoaderComponent title='List of vacancies' />} />} />
-        {/*<Route path={`/login`} element={<LoginPage />} />*/}
-        {/*<Route path={'/registration'} element={<RegPage />} />*/}
+        <Route path={`/login`} element={<LoginPage />} />
+        <Route path={'/registration'} element={<RegPage />} />
         <Route path={'/vacancies/:id'} element={<CardItem />} />
         <Route path={'/favourites'} />
       </Routes>

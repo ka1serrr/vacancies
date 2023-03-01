@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import './cardItem.scss';
 import { useActions, useItems, useSalary, useTitle } from '@/imports/hooks';
 import { checked, heart, heartFav, noImg } from '@/imports/imgs';
-import CardRecommended from '@/components/UI/CardsRecommended/CardsRecommended';
+import CardRecommended from '@/components/common/CardsRecommended/CardsRecommended';
 import { useGetVacancyQuery } from '@/api/cardItemApiSlice';
 import { ErrorMessage } from '@/components/UI/ErrorMessage/ErrorMessage';
 import { Button } from '@/components/UI/Button/Button';

@@ -8,7 +8,7 @@ import { LoaderComponent } from '@/components/UI/LoaderComponent/LoaderComponent
 import { useActions, useTitle, useTypedSelector } from '@/imports/hooks';
 import { ErrorMessage } from '@/components/UI/ErrorMessage/ErrorMessage';
 import { Pagination } from '@/components/UI/Pagination/Pagination';
-import { ChangeAmountOfVacancies } from '@/components/UI/changeAmountOfVacancies/ChangeAmountOfVacancies';
+import { ChangeAmountOfVacancies } from '@/components/common/changeAmountOfVacancies/ChangeAmountOfVacancies';
 
 const Content: FC = () => {
   useTitle('All vacancies');

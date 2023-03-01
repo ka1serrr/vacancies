@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import './cardsRecommended.scss';
-import { RecommendedCard } from '@/components/UI/CardsRecommended/CardRecommended/RecommendedCard';
+import { RecommendedCard } from '@/components/common/CardsRecommended/CardRecommended/RecommendedCard';
 import { useGetRecommendedQuery } from '@/api/recommendedApiSlice';
 import { LoaderSvg } from '@/components/UI/LoaderSvg/LoaderSvg';
 
