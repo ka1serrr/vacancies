@@ -1,5 +1,6 @@
 import { favSlice } from '@/slices/favSlice/favSlice';
 import { paginationSlice } from '@/slices/paginationSlice/paginationSlice';
+import { userSlice } from '@/slices/userSlice/useSliceTypes';
 import { vacanciesApiSlice } from '@/api/vacanciesApiSlice';
 import { recommendedApiSlice } from '@/api/recommendedApiSlice';
 import { vacancyApiSlice } from '@/api/cardItemApiSlice';
@@ -16,12 +17,11 @@ import {
   persistStore,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { userSlice } from '@/slices/userSlice/useSliceTypes';
 
 const persistConfig: PersistConfig<any> = {
   key: 'root',
   storage,
-  whitelist: ['fav'],
+  whitelist: ['fav', 'user'],
 };
 
 const rootReducer = combineReducers({
