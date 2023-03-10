@@ -1,6 +1,6 @@
 import { favSlice } from '@/slices/favSlice/favSlice';
 import { paginationSlice } from '@/slices/paginationSlice/paginationSlice';
-import { userSlice } from '@/slices/userSlice/useSliceTypes';
+import { userSlice } from '@/slices/userSlice/userSlice';
 import { vacanciesApiSlice } from '@/api/vacanciesApiSlice';
 import { recommendedApiSlice } from '@/api/recommendedApiSlice';
 import { vacancyApiSlice } from '@/api/cardItemApiSlice';

@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { bindActionCreators } from 'redux';
 import { favSlice } from '@/slices/favSlice/favSlice';
 import { paginationSlice } from '@/slices/paginationSlice/paginationSlice';
-import { userSlice } from '@/slices/userSlice/useSliceTypes';
+import { userSlice } from '@/slices/userSlice/userSlice';
 
 const rootAction = {
   ...favSlice.actions,

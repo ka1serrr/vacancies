@@ -3,8 +3,10 @@
 .form {
   >&__wrapper {
     margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
     border-radius: 30px 30px 0 0;
-    padding: 40px;
+    padding: 10px;
   }
 
   >&__label {
@@ -13,16 +15,40 @@
     font-size: 24px;
     line-height: 29px;
     font-family: $rubik-family;
-    margin-bottom: 33px;
+    margin-bottom: 10px;
+    display: block;
   }
 
   >&__input {
     border-bottom: 3px solid $main-color;
     width: 282px;
     margin-bottom: 20px;
+    padding-bottom: 10px;
+    font-size: 18px;
   }
 
   >&__inputs-wrap {
-    margin-bottom: 33px;
+    margin-bottom: 12px;
+    width: 400px;
+    padding-left: calc(50% - 141px);
+
   }
+  >&__input-wrap {
+    width: 100%;
+    margin: 0 auto 20px;
+  }
+
+  &__error {
+    font-size: 18px;
+    color: $main-red;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  &__btn {
+    margin: 0 auto;
+    display: block;
+  }
+
 }

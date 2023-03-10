@@ -1,9 +1,11 @@
-import React from 'react';
-
+import { Reg } from '@/components/common/Reg/Reg';
+import { useTitle } from 'react-use';
 const RegPage = () => {
+  useTitle('Registration Page');
   return (
-    <div>
-      <h1>RegPage</h1>
+    <div className='container'>
+      <h1 className='title'>Registration</h1>
+      <Reg />
     </div>
   );
 };
