@@ -2,15 +2,18 @@ import { Form } from '@/components/UI/Form/Form';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useActions } from '@/imports/hooks';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+
 export const Reg = () => {
   const { setUser } = useActions();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleReg = (email: string, password: string) => {
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [loading, setLoading] = useState(false);
+  console.log(error);
+  const handleReg = async (email: string, password: string) => {
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
+    await setLoading(true);
+    await createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         setUser({
           email: user.email,
@@ -18,13 +21,15 @@ export const Reg = () => {
           // @ts-ignore
           token: user.accessToken,
         });
+        setLoading(false);
         navigate('/');
+        ``;
       })
-      .catch(console.error);
+      .catch(({ message, code }) => setError(code));
   };
   return (
     <div>
-      <Form btnText='Registration' handleClick={handleReg} />
+      <Form btnText='Registration' loading={loading} handleClick={handleReg} />
     </div>
   );
 };

@@ -1,18 +1,18 @@
 import { useFormik } from 'formik';
 import { FC } from 'react';
-import firebase from 'firebase/compat';
-import functions = firebase.functions;
 import { validationSchema } from './formValidationSchema';
 import { FormError } from '@/components/UI/Form/FormError';
 import { Button } from '@/components/UI/Button/Button';
 import './form.scss';
+import { LoaderSvg } from '@/components/UI/LoaderSvg/LoaderSvg';
 
 interface IForm {
   btnText: string;
   handleClick(email: string, password: string): void;
+  loading: boolean;
 }
 
-export const Form: FC<IForm> = ({ btnText, handleClick }) => {
+export const Form: FC<IForm> = ({ btnText, handleClick, loading }) => {
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -54,11 +54,12 @@ export const Form: FC<IForm> = ({ btnText, handleClick }) => {
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
-              {formik.touched.email && formik.errors.email ? <FormError error={formik.errors.password} /> : null}
+              {formik.touched.password && formik.errors.password ? <FormError error={formik.errors.password} /> : null}
             </div>
           </div>
         </div>
         <Button title={btnText} className='btn form__btn' type='submit' />
+        {loading ? <LoaderSvg className='loading' /> : null}
       </div>
     </form>
   );
