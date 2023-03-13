@@ -5,14 +5,24 @@ import { FormError } from '@/components/UI/Form/FormError';
 import { Button } from '@/components/UI/Button/Button';
 import './form.scss';
 import { LoaderSvg } from '@/components/UI/LoaderSvg/LoaderSvg';
+import { AuthErrorMessage } from '@/components/UI/AuthErrorMessages/AuthErrorMessage';
 
 interface IForm {
   btnText: string;
   handleClick(email: string, password: string): void;
   loading: boolean;
+  errorCode: string | null;
 }
+const LoadingElement = () => {
+  return (
+    <div className='loading__wrapper'>
+      <LoaderSvg className='form__loading' />
+      <div className='overlay'></div>
+    </div>
+  );
+};
 
-export const Form: FC<IForm> = ({ btnText, handleClick, loading }) => {
+export const Form: FC<IForm> = ({ btnText, handleClick, loading, errorCode }) => {
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -59,7 +69,8 @@ export const Form: FC<IForm> = ({ btnText, handleClick, loading }) => {
           </div>
         </div>
         <Button title={btnText} className='btn form__btn' type='submit' />
-        {loading ? <LoaderSvg className='loading' /> : null}
+        {loading ? <LoadingElement /> : null}
+        {errorCode ? <AuthErrorMessage error={errorCode} /> : null}
       </div>
     </form>
   );

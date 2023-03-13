@@ -7,7 +7,7 @@ import { useState } from 'react';
 export const Reg = () => {
   const { setUser } = useActions();
   const navigate = useNavigate();
-  const [error, setError] = useState<string | undefined>(undefined);
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   console.log(error);
   const handleReg = async (email: string, password: string) => {
@@ -23,13 +23,15 @@ export const Reg = () => {
         });
         setLoading(false);
         navigate('/');
-        ``;
       })
-      .catch(({ message, code }) => setError(code));
+      .catch(({ message, code }) => {
+        setError(code);
+        setLoading(false);
+      });
   };
   return (
     <div>
-      <Form btnText='Registration' loading={loading} handleClick={handleReg} />
+      <Form btnText='Registration' errorCode={error} loading={loading} handleClick={handleReg} />
     </div>
   );
 };
