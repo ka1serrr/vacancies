@@ -3,6 +3,7 @@ import './cardsRecommended.scss';
 import { RecommendedCard } from '@/components/common/CardsRecommended/CardRecommended/RecommendedCard';
 import { useGetRecommendedQuery } from '@/api/recommendedApiSlice';
 import { LoaderSvg } from '@/components/UI/LoaderSvg/LoaderSvg';
+import { useTypedSelector } from '@/imports/hooks';
 
 interface IRecommendedProps {
   cardId: string;
