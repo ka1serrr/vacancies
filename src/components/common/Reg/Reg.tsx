@@ -4,13 +4,17 @@ import { useActions } from '@/imports/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-export const Reg = () => {
+interface IReg {
+  prevPage: string;
+}
+
+export const Reg = ({ prevPage }: IReg) => {
   const { setUser } = useActions();
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  console.log(error);
   const handleReg = async (email: string, password: string) => {
+    await setError(null);
     const auth = getAuth();
     await setLoading(true);
     await createUserWithEmailAndPassword(auth, email, password)
@@ -22,7 +26,7 @@ export const Reg = () => {
           token: user.accessToken,
         });
         setLoading(false);
-        navigate('/');
+        navigate(prevPage);
       })
       .catch(({ message, code }) => {
         setError(code);

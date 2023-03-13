@@ -1,6 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import './layout.scss';
 import { Link } from 'react-router-dom';
+import user from '@/resources/user.svg';
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -16,7 +17,10 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
             <div className='layout__wrapper-right'>
               <ul className='layout__links'>
                 <li className='layout__link'>
-                  <Link to={'/favourites'}>Favourites</Link>
+                  <Link to={'/favourites'}>
+                    {/*// @ts-ignore*/}
+                    <img src={user} alt='' width='40px' />
+                  </Link>
                 </li>
                 {/*<li className="wrapper__link"></li>*/}
               </ul>

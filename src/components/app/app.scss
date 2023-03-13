@@ -32,3 +32,18 @@ body {
     margin-bottom: 10px;
     text-align: center;
 }
+.auth_help {
+    font-size: 20px;
+    color: $layout-color;
+    text-align: center;
+    margin-top: 20px;
+
+    >a {
+        color: $main-red;
+        text-decoration: underline;
+        &:hover {
+            cursor: pointer;
+
+        }
+    }
+}

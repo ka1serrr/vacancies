@@ -3,16 +3,20 @@ import { useActions } from '@/imports/hooks';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-export const Login = () => {
+interface ILogin {
+  prevPage: string;
+}
+export const Login = ({ prevPage }: ILogin) => {
   const { setUser } = useActions();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const handleLogin = (email: string, password: string) => {
+
+  const handleLogin = async (email: string, password: string) => {
+    await setError(null);
     const auth = getAuth();
-    setLoading(true);
-    signInWithEmailAndPassword(auth, email, password)
+    await setLoading(true);
+    await signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         setUser({
           email: user.email,
@@ -21,10 +25,14 @@ export const Login = () => {
           token: user.accessToken,
         });
         setLoading(false);
-        navigate('/');
+        navigate(prevPage);
       })
-      .catch(({ code }) => setError(code));
+      .catch(({ code }) => {
+        setLoading(false);
+        setError(code);
+      });
   };
+
   return (
     <div>
       <Form loading={loading} errorCode={error} btnText='Login' handleClick={handleLogin} />
