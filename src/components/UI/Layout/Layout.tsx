@@ -17,7 +17,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
             <div className='layout__wrapper-right'>
               <ul className='layout__links'>
                 <li className='layout__link'>
-                  <Link to={'/favourites'}>
+                  <Link to={'/profile'}>
                     {/*// @ts-ignore*/}
                     <img src={user} alt='' width='40px' />
                   </Link>

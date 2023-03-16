@@ -2,7 +2,7 @@ import { Form } from '@/components/UI/Form/Form';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useActions } from '@/imports/hooks';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useStatus } from '@/hooks/useStatus';
 
 interface IReg {
   prevPage: string;
@@ -11,12 +11,12 @@ interface IReg {
 export const Reg = ({ prevPage }: IReg) => {
   const { setUser } = useActions();
   const navigate = useNavigate();
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const { error, setError, loading, setLoading } = useStatus();
   const handleReg = async (email: string, password: string) => {
     await setError(null);
     const auth = getAuth();
     await setLoading(true);
+
     await createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         setUser({

@@ -1,15 +1,11 @@
 import { useLocation, Navigate } from 'react-router-dom';
-import { useTypedSelector } from '@/imports/hooks';
+import { useAuth } from '@/hooks/useAuth';
+import { IChildren } from '@/types/jsxChildren.interface';
 
-interface IRequireAuth {
-  children: JSX.Element;
-}
-
-export const RequireAuth = ({ children }: IRequireAuth) => {
+export const RequireAuth = ({ children }: IChildren) => {
   const location = useLocation();
-  const { token } = useTypedSelector((state) => state.user);
-
-  if (!token) {
+  const { isAuth } = useAuth();
+  if (!isAuth) {
     return <Navigate to='/login' state={{ from: location }} />;
   }
   return children;
