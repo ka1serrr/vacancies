@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { useActions, useTypedSelector } from '@/imports/hooks';
 import { createPages } from '@/components/UI/Pagination/countPages';
 import './pagination.scss';

@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 
 import { useGetVacanciesQuery } from '@/api/vacanciesApiSlice';
 
-import { Card } from '@/components/UI/Card/Card';
+import { Card, ICard } from '@/components/UI/Card/Card';
 import { IData } from '@/types/vacancies.interface';
 import { LoaderComponent } from '@/components/UI/LoaderComponent/LoaderComponent';
 import { useActions, useTitle, useTypedSelector } from '@/imports/hooks';
@@ -13,7 +13,7 @@ import { ChangeAmountOfVacancies } from '@/components/common/changeAmountOfVacan
 const Content: FC = () => {
   useTitle('All vacancies');
 
-  const { setCurrentPage, setTotalPages } = useActions();
+  const { setTotalPages } = useActions();
   const { currentPage, perPage } = useTypedSelector((state) => state.pagination);
 
   const {
@@ -36,7 +36,7 @@ const Content: FC = () => {
   const error = !isFetching && isError ? <ErrorMessage message={fetchError.message} /> : null;
 
   const content =
-    !isFetching && !isError && data?.data.map((item: IData) => <Card key={item.id} {...item} item={item} />);
+    !isFetching && !isError && data?.data.map((item: any) => <Card key={item.id} {...item} item={item} />);
 
   return (
     <div className='content'>

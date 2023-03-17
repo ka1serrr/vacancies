@@ -1,57 +1,57 @@
 export interface IVacancies extends Array<any> {
-    name: string,
-    alternate_url: string,
-    id: any,
-    area: IArea,
-    employer: IEmployer
-    schedule?: ISchedule,
-    salary?: ISalary,
-    snippet?: ISnippet
+  name: string;
+  alternate_url: string;
+  id: any;
+  area: IArea;
+  employer: IEmployer;
+  schedule?: ISchedule;
+  salary?: ISalary;
+  snippet?: ISnippet;
 }
 export interface ITransformedData {
-    name: IVacancies['name'],
-    address: IVacancies['area'],
-    company: IEmployer['name'],
-    companyImg: IEmployer['logo_urls'],
-    web: IVacancies['alternate_url'],
-    form: ISchedule['name'],
-    salaryFrom: ISalary['from'],
-    salaryTo: ISalary['to'],
-    responsibility: ISnippet["responsibility"],
-    requirement: ISnippet['requirement'],
-    id: IVacancies['id'],
+  name: IVacancies['name'];
+  address: IVacancies['area'];
+  company: IEmployer['name'];
+  companyImg: IEmployer['logo_urls'];
+  web: IVacancies['alternate_url'];
+  form: ISchedule['name'];
+  salaryFrom: ISalary['from'];
+  salaryTo: ISalary['to'];
+  responsibility: ISnippet['responsibility'];
+  requirement: ISnippet['requirement'];
+  id: string;
 }
 
 export interface IData extends ITransformedData {
-    [key: string]: any
+  [key: string]: any;
 }
 
 export interface IArea {
-    name: string,
+  name: string;
 }
 
 export interface IEmployer {
-    name: string,
-    url?: string,
-    logo_urls: ILogoUrls;
+  name: string;
+  url?: string;
+  logo_urls: ILogoUrls;
 }
 
 export interface ILogoUrls {
-    original?: string | '';
+  original?: string | '';
 }
 
 export interface ISchedule {
-    name: string,
-    id?: string,
+  name: string;
+  id?: string;
 }
 
 export interface ISalary {
-    from?: number,
-    to?: number,
-    currency: string
+  from?: number;
+  to?: number;
+  currency: string;
 }
 
 export interface ISnippet {
-    responsibility: string,
-    requirement: string
+  responsibility: string;
+  requirement: string;
 }

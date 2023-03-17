@@ -6,10 +6,14 @@ import cn from 'clsx';
 import './card.scss';
 // SELF
 import { heart, heartFav, noImg } from '@/imports/imgs';
-import { IData } from '@/types/vacancies.interface';
+import { IData, ITransformedData } from '@/types/vacancies.interface';
 import { useActions, useItems, useSalary } from '@/imports/hooks';
 
-export const Card: FC<IData> = ({
+export interface ICard extends ITransformedData {
+  item?: [key: unknown];
+}
+
+export const Card: FC<ICard> = ({
   id,
   name,
   address,
