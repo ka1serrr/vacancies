@@ -7,16 +7,12 @@ interface IPagination {
   onPageChange?: unknown;
 }
 
-export const Pagination: FC<IPagination> = ({ onPageChange }): any => {
-  const { totalPages, perPage, currentPage } = useTypedSelector((state) => state.pagination);
-  const { setCurrentPage } = useActions();
-
-  const pagesCount = Math.ceil(totalPages / perPage);
-  const pages: number[] = [1];
-  createPages(pages, pagesCount, currentPage);
-
-  // useEffect(() => {}, [totalPages, currentPage]);
-
+interface IPages {
+  pages: number[];
+  currentPage: number;
+  setCurrentPage: any;
+}
+const Pages = ({ pages, currentPage, setCurrentPage }: IPages) => {
   return (
     <div className='pages'>
       {pages.map((page, index) => (
@@ -32,4 +28,17 @@ export const Pagination: FC<IPagination> = ({ onPageChange }): any => {
       ))}
     </div>
   );
+};
+
+export const Pagination: FC<IPagination> = ({ onPageChange }): any => {
+  const { totalPages, perPage, currentPage } = useTypedSelector((state) => state.pagination);
+  const { setCurrentPage } = useActions();
+
+  const pagesCount = Math.ceil(totalPages / perPage);
+  const pages: number[] = [1];
+  createPages(pages, pagesCount, currentPage);
+
+  // useEffect(() => {}, [totalPages, currentPage]);
+
+  return <Pages pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage} />;
 };
