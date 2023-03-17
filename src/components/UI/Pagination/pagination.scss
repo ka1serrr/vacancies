@@ -1,11 +1,16 @@
 .pages {
-  margin: 20px 0;
-
-  >&__page {
+  margin: 20px auto;
+  width: 350px;
+  .page {
     border: 1px solid lightgray;
     border-radius: 100%;
     padding: 5px 10px;
     margin: 0 auto;
     cursor: pointer;
+
+    &_active {
+      border: 2px solid gray;
+      font-weight: 700;
+    }
   }
 }

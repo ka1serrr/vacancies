@@ -18,8 +18,8 @@ const Content: FC = () => {
 
   const {
     data,
-    isLoading,
     isError,
+    isFetching,
     error: fetchError,
     isSuccess,
   } = useGetVacanciesQuery({ page: currentPage, perPage });
@@ -30,13 +30,13 @@ const Content: FC = () => {
     }
   }, [isSuccess, data?.found]);
 
-  const loading = isLoading && [...Array(perPage)].map((item, i) => <LoaderComponent key={i} />);
+  const loading = isFetching && [...Array(perPage)].map((item, i) => <LoaderComponent key={i} />);
 
   // @ts-ignore
-  const error = !isLoading && isError ? <ErrorMessage message={fetchError.message} /> : null;
+  const error = !isFetching && isError ? <ErrorMessage message={fetchError.message} /> : null;
 
   const content =
-    !isLoading && !isError && data?.data.map((item: IData) => <Card key={item.id} {...item} item={item} />);
+    !isFetching && !isError && data?.data.map((item: IData) => <Card key={item.id} {...item} item={item} />);
 
   return (
     <div className='content'>
@@ -46,6 +46,7 @@ const Content: FC = () => {
         {loading}
         {error}
         {content}
+        <Pagination />
       </div>
     </div>
   );

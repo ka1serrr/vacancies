@@ -3,10 +3,12 @@ export const createPages = (pages: number[], pagesCount: number, currentPage: nu
     if (currentPage > 5) {
       for (let i = currentPage - 4; i <= currentPage + 5; i++) {
         pages.push(i);
-        if (i == pagesCount) break;
+        if (i === 40) break;
+        if (i === pagesCount) break;
       }
     } else {
       for (let i = 1; i <= 10; i++) {
+        if (i === 1) continue;
         pages.push(i);
         if (i == pagesCount) break;
       }

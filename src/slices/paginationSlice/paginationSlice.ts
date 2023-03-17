@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 // !! Слайс делается только для практики RTK !!
 const initialState: IPaginationSliceTypes = {
   totalPages: 1,
-  currentPage: 0,
+  currentPage: 1,
   perPage: 5,
 };
 
